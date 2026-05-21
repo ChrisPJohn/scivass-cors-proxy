@@ -1,5 +1,5 @@
 /**
- * Cloudflare Worker for Sift Proxy
+ * Cloudflare Worker for Scivass Proxy
  * Handles standard CORS proxying and batch fetching for RSS.
  */
 
@@ -41,7 +41,7 @@ async function handleBatch(request) {
         if (request.headers.has('User-Agent')) {
           headers['User-Agent'] = request.headers.get('User-Agent');
         } else {
-          headers['User-Agent'] = 'Sift-RSS-Fetcher/1.0';
+          headers['User-Agent'] = 'Scivass-RSS-Fetcher/1.0';
         }
 
         const res = await fetch(url, {
@@ -118,7 +118,7 @@ async function handleProxy(request) {
 
   // Some cloud providers block requests without a User-Agent
   if (!originalHeaders.has('User-Agent')) {
-    originalHeaders.set('User-Agent', 'Sift-Proxy/1.0');
+    originalHeaders.set('User-Agent', 'Scivass-Proxy/1.0');
   }
 
   try {
